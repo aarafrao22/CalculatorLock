@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button b3;
     private Button b4;
     private Button b5;
+    String pass2;
     private Button b6;
     private Button b7;
     private Button b8;
@@ -58,6 +61,28 @@ public class MainActivity extends AppCompatActivity {
         viewSetup();
         prefs = getSharedPreferences("com.aaraf.calculatorlock", MODE_PRIVATE);
 
+
+        pass2 = prefs.getString("pass", "");
+        t2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (pass2.equals(t2.getText().toString())) {
+                    Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
 
         b1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -326,13 +351,14 @@ public class MainActivity extends AppCompatActivity {
                         b_equal.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                String pass2 = t1.getText().toString();
+                                pass2 = t1.getText().toString();
                                 if (pass2.length() > 1 && pass2.equals(pass1)) {
                                     Toast.makeText(getApplicationContext(), "Password Stted", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(),HiddenActivity.class);
+                                    prefs.edit().putString("pass", pass2).apply();
+                                    Intent intent = new Intent(getApplicationContext(), HiddenActivity.class);
                                     startActivity(intent);
                                     finish();
-                                }else {
+                                } else {
                                     Toast.makeText(MainActivity.this, "Again", Toast.LENGTH_SHORT).show();
                                 }
 
