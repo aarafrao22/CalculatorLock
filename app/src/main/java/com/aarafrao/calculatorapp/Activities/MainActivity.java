@@ -3,6 +3,7 @@ package com.aarafrao.calculatorapp.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -328,6 +329,9 @@ public class MainActivity extends AppCompatActivity {
                                 String pass2 = t1.getText().toString();
                                 if (pass2.length() > 1 && pass2.equals(pass1)) {
                                     Toast.makeText(getApplicationContext(), "Password Stted", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(),HiddenActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }else {
                                     Toast.makeText(MainActivity.this, "Again", Toast.LENGTH_SHORT).show();
                                 }
