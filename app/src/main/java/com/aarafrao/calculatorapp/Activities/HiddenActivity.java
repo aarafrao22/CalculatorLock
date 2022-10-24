@@ -33,6 +33,7 @@ public class HiddenActivity extends AppCompatActivity implements ClickListener {
         list = new ArrayList<>();
 
         listData();
+
         gridViewAdapter = new GridViewAdapter(list, this, HiddenActivity.this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(HiddenActivity.this, 2);
@@ -52,9 +53,9 @@ public class HiddenActivity extends AppCompatActivity implements ClickListener {
 
     @Override
     public void onItemClicked(int position) {
-        Toast.makeText(HiddenActivity.this, position, Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(this, HiddenActivity2.class);
-//        intent.putExtra("position", position);
-//        startActivity(intent);
+        Toast.makeText(HiddenActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HiddenActivity2.class);
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 }
