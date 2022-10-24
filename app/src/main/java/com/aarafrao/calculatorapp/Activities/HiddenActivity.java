@@ -4,17 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.aarafrao.calculatorapp.Adapters.GridViewAdapter;
+import com.aarafrao.calculatorapp.ClickListener;
 import com.aarafrao.calculatorapp.Model.ProductModel;
 import com.aarafrao.calculatorapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HiddenActivity extends AppCompatActivity {
-    private List<ProductModel> list ;
+public class HiddenActivity extends AppCompatActivity implements ClickListener {
+    private List<ProductModel> list;
+    Context context;
     GridViewAdapter gridViewAdapter;
     private RecyclerView recyclerView;
 
@@ -25,13 +30,12 @@ public class HiddenActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        list= new ArrayList<>();
-
+        list = new ArrayList<>();
 
         listData();
-        gridViewAdapter = new GridViewAdapter(list);
+        gridViewAdapter = new GridViewAdapter(list, this, HiddenActivity.this);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(HiddenActivity.this,2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(HiddenActivity.this, 2);
         gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(gridViewAdapter);
@@ -40,10 +44,17 @@ public class HiddenActivity extends AppCompatActivity {
     }
 
     private void listData() {
-        list.add(new ProductModel(R.drawable.ic_launcher_background,"TItle","Desc","Price"));
-        list.add(new ProductModel(R.drawable.ic_launcher_background,"TItle","Desc","Price"));
-        list.add(new ProductModel(R.drawable.ic_launcher_background,"TItle","Desc","Price"));
-        list.add(new ProductModel(R.drawable.ic_launcher_background,"TItle","Desc","Price"));
-        list.add(new ProductModel(R.drawable.ic_launcher_background,"TItle","Desc","Price"));
+        list.add(new ProductModel(R.drawable.ic_launcher_background, "Gallery", "Hidden Gallery", "Price"));
+        list.add(new ProductModel(R.drawable.ic_launcher_background, "Video", "Hidden Video", "Price"));
+        list.add(new ProductModel(R.drawable.ic_launcher_background, "Audio", "Hidden Audio", "Price"));
+        list.add(new ProductModel(R.drawable.ic_launcher_background, "Documents", "Hidden Documents", "Price"));
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Toast.makeText(HiddenActivity.this, position, Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(this, HiddenActivity2.class);
+//        intent.putExtra("position", position);
+//        startActivity(intent);
     }
 }

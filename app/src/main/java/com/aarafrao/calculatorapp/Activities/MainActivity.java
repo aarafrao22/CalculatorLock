@@ -19,26 +19,8 @@ import com.aarafrao.calculatorapp.R;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button b1;
-    private Button b2;
-    private Button b3;
-    private Button b4;
-    private Button b5;
+    private Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, b_equal, b_multi, b_divide, b_add, b_sub, b_clear, b_dot, b_para1, b_para2;
     String pass2;
-    private Button b6;
-    private Button b7;
-    private Button b8;
-    private Button b9;
-    private Button b0;
-    private Button b_equal;
-    private Button b_multi;
-    private Button b_divide;
-    private Button b_add;
-    private Button b_sub;
-    private Button b_clear;
-    private Button b_dot;
-    private Button b_para1;
-    private Button b_para2;
     private EditText t1;
     private EditText t2;
     private final char ADDITION = '+';
@@ -322,7 +304,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Empty text views on long click.
         b_clear.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -339,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (prefs.getBoolean("firstrun", true)) {
+        if (pass2.equals("")) {
             t2.setHint("Enter Password");
             b_equal.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -368,8 +349,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-
-            prefs.edit().putBoolean("firstrun", false).apply();
         }
     }
 
