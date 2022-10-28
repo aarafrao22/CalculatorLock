@@ -6,13 +6,11 @@ public class ProductModel {
     private int productImage;
     private String productTitle;
     private String productDescription;
-    private String productPrice;
 
     public ProductModel(int productImage, String productTitle, String productDescription, String productPrice) {
         this.productImage = productImage;
         this.productTitle = productTitle;
         this.productDescription = productDescription;
-        this.productPrice = productPrice;
     }
 
     public int getProductImage() {
@@ -39,11 +37,4 @@ public class ProductModel {
         this.productDescription = productDescription;
     }
 
-    public String getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
-    }
 }

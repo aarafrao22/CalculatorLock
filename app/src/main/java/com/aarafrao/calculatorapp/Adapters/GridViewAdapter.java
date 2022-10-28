@@ -35,7 +35,9 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     public GridViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                          int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_scroll_item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.horizontal_scroll_item_layout,
+                        parent, false);
 
         return new ViewHolder(view);
     }
@@ -45,11 +47,9 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         int resource = ProductModelList.get(position).getProductImage();
         String title = ProductModelList.get(position).getProductTitle();
         String description = ProductModelList.get(position).getProductDescription();
-        String price = ProductModelList.get(position).getProductPrice();
 
         holder.setProductDesc(description);
         holder.setProductTitle(title);
-        holder.setProductPrice(price);
         holder.setProductImage(resource);
 
     }
@@ -68,14 +68,12 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         private ImageView productImage;
         private TextView productTitle;
         private TextView productDesc;
-        private TextView productPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.hs_product_Image);
             productTitle = itemView.findViewById(R.id.hs_product_title);
             productDesc = itemView.findViewById(R.id.hs_product_description);
-            productPrice = itemView.findViewById(R.id.hs_product_price);
 
             itemView.setOnClickListener(this);
 
@@ -95,9 +93,6 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
             productDesc.setText(desc);
         }
 
-        private void setProductPrice(String price) {
-            productPrice.setText(price);
-        }
 
         @Override
         public void onClick(View view) {

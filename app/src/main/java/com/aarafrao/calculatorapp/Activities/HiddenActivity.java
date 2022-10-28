@@ -19,7 +19,6 @@ import java.util.List;
 
 public class HiddenActivity extends AppCompatActivity implements ClickListener {
     private List<ProductModel> list;
-    Context context;
     GridViewAdapter gridViewAdapter;
     private RecyclerView recyclerView;
 
@@ -53,7 +52,6 @@ public class HiddenActivity extends AppCompatActivity implements ClickListener {
 
     @Override
     public void onItemClicked(int position) {
-        Toast.makeText(HiddenActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, HiddenActivity2.class);
         intent.putExtra("position", position);
         startActivity(intent);
