@@ -46,14 +46,13 @@ public class HiddenActivity2 extends AppCompatActivity {
 
     }
 
-    private void createFolder(String name)  {
-        File mydir = getApplicationContext().getDir(name, Context.MODE_PRIVATE); //Creating an internal directory;
-        File fileWithinMyDir = new File(mydir, "myfile");
-        try {
-            FileOutputStream out = new FileOutputStream(fileWithinMyDir);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    private void createFolder(String name) {
+        File mydir = getApplicationContext().getExternalFilesDir(name); //Creating an internal directory;
+        if (!mydir.exists()) {
+            mydir.mkdirs();
+            Toast.makeText(this, "Created" + " -> " + mydir.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+        } else {
+
         }
-        Toast.makeText(this, name + " -> " + mydir.getAbsolutePath(), Toast.LENGTH_SHORT).show();
     }
 }
