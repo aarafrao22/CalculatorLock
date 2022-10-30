@@ -14,7 +14,16 @@
         android:layout_margin="16dp"
         android:horizontalSpacing="4dp"
         android:numColumns="3"
+        android:visibility="gone"
         android:verticalSpacing="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/selectedImagePreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
